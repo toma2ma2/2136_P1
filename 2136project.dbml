@@ -1,0 +1,42 @@
+Table Hotelchain {
+  central_office_address string
+  hotel_numebr integer
+  phonenumber integer
+  email string
+  star_rating integer [note: '1-5']
+}
+
+Table Hotel {
+  number_of_rooms integer
+  address string
+  phone_number integer
+  email string
+}
+
+Table rooms {
+  room_numbner int [primary key]
+  price flout
+  amentities string
+  capacity int
+  view_type bool
+  extendable int
+  problem bool
+}
+
+Table customers{
+  firstName string
+  lastName string
+  address string
+  idType string
+  idnumber int [primary key]
+  registration_date string
+}
+
+Table employee{
+  firstName string
+  lastName string
+  address string
+  ssn_sin int [primary key]
+  role string
+}
+
