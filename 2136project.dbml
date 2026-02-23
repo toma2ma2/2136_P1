@@ -1,42 +1,101 @@
-Table Hotelchain {
-  central_office_address string
-  hotel_numebr integer
-  phonenumber integer
-  email string
-  star_rating integer [note: '1-5']
+Table hotelChain {
+  chain_name varchar [pk]
+  central_office_address varchar [not null]
+  phone_number varchar [not null]
+  email varchar [not null]
+  number_of_hotels int [note: "more than 1"]
 }
 
-Table Hotel {
-  number_of_rooms integer
-  address string
-  phone_number integer
-  email string
+Table hotel {
+  hotel_id int [pk, increment]
+  chain_name varchar [not null]
+  address varchar [not null]
+  star_rating int [not null, note: 'has to be 1-5']
+  number_of_rooms int [note: "more than 1"]
+  phone_number varchar [not null]
+  email varchar [not null]
+  manager_employee_id int [not null, unique,note: 'Each hotel need to have 1 manager and a manager can have more than 1 employees']
 }
 
-Table rooms {
-  room_numbner int [primary key]
-  price flout
-  amentities string
-  capacity int
-  view_type bool
-  extendable int
-  problem bool
+Table room {
+  hotel_id int [not null]
+  room_number int [not null]
+  price decimal [not null]
+  amenities varchar [note: "more than 1 value"]
+  capacity int [not null, note: "more than 1"]
+  view_type varchar [note: 'sea | mountain | none']  
+  extendable bool
+  has_problem bool
+
+  Indexes {
+    (hotel_id, room_number) [pk]
+  }
 }
 
-Table customers{
-  firstName string
-  lastName string
-  address string
-  idType string
-  idnumber int [primary key]
-  registration_date string
+Ref: hotel.chain_name > hotelChain.chain_name [delete: cascade]
+Ref: room.hotel_id > hotel.hotel_id [delete: cascade]
+
+Table customer {
+  customer_id int [pk, increment]
+  first_name varchar [not null]
+  last_name varchar [not null]
+  address varchar [not null]
+  id_type varchar [not null]
+  id_number varchar [not null]
+  registration_date date [not null]
 }
 
-Table employee{
-  firstName string
-  lastName string
-  address string
-  ssn_sin int [primary key]
-  role string
+Table employee {
+  employee_id int [pk, increment]
+  hotel_id int [not null]
+  first_name varchar [not null]
+  last_name varchar [not null]
+  address varchar [not null]
+  ssn_sin varchar [not null, unique]
+  role varchar [not null]
+}
+Ref: employee.hotel_id > hotel.hotel_id [delete: cascade] 
+Ref: hotel.manager_employee_id > employee.employee_id
+
+Table Booking {
+  booking_id int [pk, increment]
+  customer_id int [not null,note:'a customer can only create 1  booking at a time for the same time period']
+
+  hotel_id int [not null]
+  room_number int [not null]
+  start_date date [not null]
+  end_date date [not null]
+  status varchar [not null, note: 'ACTIVE | CANCELLED | CONVERTED']
 }
 
+Table Renting {
+  renting_id int [pk, increment]
+  booking_id int  [note:'null if its walk in']
+  customer_id int [not null]
+  employee_id int [not null, note:'the one who checked-in / created renting']
+  hotel_id int [not null]
+  room_number int [not null]
+  start_date date [not null]
+  end_date date [not null]
+}
+Ref: Booking.customer_id > customer.customer_id 
+Ref: Renting.booking_id > Booking.booking_id
+Ref: Renting.customer_id > customer.customer_id
+Ref: Renting.employee_id > employee.employee_id
+Ref: Renting.(hotel_id, room_number) > room.(hotel_id, room_number)
+
+
+Table Archive {
+  archive_id int [pk, increment]
+  chain_name varchar [not null]
+  hotel_id int [not null]
+  room_number int [not null]
+  customer_fname varchar [not null]
+  customer_lname varchar [not null]
+  employee_fname varchar [not null]
+  employee_lname varchar [not null]
+  start_date date [not null]
+  end_date date [not null]
+  archived_at date [not null]
+
+}

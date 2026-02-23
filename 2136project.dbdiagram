@@ -3,8 +3,213 @@
   "darkMode": true,
   "gridEnabling": false,
   "detailLevel": "All",
-  "tablePositions": [],
+  "tablePositions": [
+    {
+      "name": "hotelChain",
+      "schemaName": "public",
+      "x": 16.762503383883654,
+      "y": 1323.3204298606838
+    },
+    {
+      "name": "hotel",
+      "schemaName": "public",
+      "x": 425.06103980248713,
+      "y": 1829.3107123750322
+    },
+    {
+      "name": "room",
+      "schemaName": "public",
+      "x": 986.5003906612837,
+      "y": 1471.6401315775847
+    },
+    {
+      "name": "customer",
+      "schemaName": "public",
+      "x": 963.0608140010717,
+      "y": 1015.6168839600214
+    },
+    {
+      "name": "employee",
+      "schemaName": "public",
+      "x": 3.988875733331767,
+      "y": 1670.9177295081881
+    },
+    {
+      "name": "Booking",
+      "schemaName": "public",
+      "x": 16.762503383883654,
+      "y": 983.6168839600215
+    },
+    {
+      "name": "Renting",
+      "schemaName": "public",
+      "x": 460.4598576035909,
+      "y": 1134.2797593629134
+    },
+    {
+      "name": "Archive",
+      "schemaName": "public",
+      "x": 884.0918208563577,
+      "y": 1841.6491381595783
+    }
+  ],
   "tableGroupCollapseStates": [],
   "stickyNoteLayouts": [],
-  "referencePaths": []
+  "referencePaths": [
+    {
+      "firstFieldNames": [
+        "chain_name"
+      ],
+      "firstTableName": "hotel",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "chain_name"
+      ],
+      "secondTableName": "hotelChain",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "hotel_id"
+      ],
+      "firstTableName": "room",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "hotel_id"
+      ],
+      "secondTableName": "hotel",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "hotel_id"
+      ],
+      "firstTableName": "employee",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "hotel_id"
+      ],
+      "secondTableName": "hotel",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "manager_employee_id"
+      ],
+      "firstTableName": "hotel",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "employee_id"
+      ],
+      "secondTableName": "employee",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": [
+        {
+          "x": 267.22044819809145,
+          "y": 2101.3107123750324
+        },
+        {
+          "x": 267.22044819809145,
+          "y": 1718.9177295081881
+        }
+      ]
+    },
+    {
+      "firstFieldNames": [
+        "customer_id"
+      ],
+      "firstTableName": "Booking",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "customer_id"
+      ],
+      "secondTableName": "customer",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "booking_id"
+      ],
+      "firstTableName": "Renting",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "booking_id"
+      ],
+      "secondTableName": "Booking",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "customer_id"
+      ],
+      "firstTableName": "Renting",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "customer_id"
+      ],
+      "secondTableName": "customer",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "employee_id"
+      ],
+      "firstTableName": "Renting",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "employee_id"
+      ],
+      "secondTableName": "employee",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": [
+        {
+          "x": 385.19283415547585,
+          "y": 1278.2797593629134
+        },
+        {
+          "x": 385.19283415547585,
+          "y": 1718.9177295081881
+        }
+      ]
+    },
+    {
+      "firstFieldNames": [
+        "hotel_id",
+        "room_number"
+      ],
+      "firstTableName": "Renting",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "hotel_id",
+        "room_number"
+      ],
+      "secondTableName": "room",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    }
+  ]
 }
