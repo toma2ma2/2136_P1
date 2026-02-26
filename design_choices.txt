@@ -1,0 +1,4 @@
+Room is a weak entity because it need a reference key from hotel and a room number to be identified.
+add Id beside hotelchain to be make the entities easier to be refered when relating with other endity
+archive will be storing everything withought forign keys incase elements in other table are deleted 
+renting needs to connect with room customer employee and booking so it contains every forgien keys for those entiie
