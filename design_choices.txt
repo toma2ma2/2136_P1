@@ -1,4 +1,4 @@
-Room is a weak entity because it need a reference key from hotel and a room number to be identified.
-add Id beside hotelchain to be make the entities easier to be refered when relating with other endity
-archive will be storing everything withought forign keys incase elements in other table are deleted 
-renting needs to connect with room customer employee and booking so it contains every forgien keys for those entiie
+Room is a weak entity because it requires both the hotel’s primary key and a room number to be uniquely identified.
+An ID attribute was added to HotelChain to make the entity easier to reference when creating relationships with other entities.
+The Archive table stores all relevant data without foreign keys. This ensures that archived records remain intact even if related records in other tables are deleted.
+The Renting entity must be connected to Room, Customer, Employee, and Booking. Therefore, it includes foreign keys referencing each of these entities.
